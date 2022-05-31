@@ -12,9 +12,10 @@ function selfcomment!(cmd::ObaScriptBlockAST, cmt_str::AbstractString)
     # write
     set_script!(cmd, new_script)
     write!(parent_ast(cmd))
+
     return cmd
 end
 
 # server api
-selfcomment!(cmt_str::AbstractString) = selfcomment!(get_global(:__LINE_AST__), cmt_str)
+selfcomment!(cmt_str::AbstractString) = selfcomment!(currscript(), cmt_str)
 export selfcomment!

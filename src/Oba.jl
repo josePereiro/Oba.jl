@@ -29,6 +29,7 @@ include("utils.jl")
 include("templates/standards.jl")
 
 include("utils/selfcomment.jl")
+include("utils/self_flag.jl")
 
 include("workflow/selection.jl")
 include("workflow/extract_section_to_file.jl")

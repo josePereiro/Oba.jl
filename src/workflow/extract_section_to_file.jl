@@ -49,7 +49,7 @@ end
 Accept a `template` and insert the extraction at {{OBA: SECTION}}
 Other keys {{OBA: SECTION[idx]}} {{OBA: PREVIOUS}} {{OBA: NEXT}} {{OBA: HOME}}
 """
-function extract_section_to_file(AST::ObaAST, lvl::Integer; 
+function extract_section_to_file!(AST::ObaAST, lvl::Integer; 
         start = firstindex(AST),
         rename_mask = r".*",
         dir = dirname(parent_file(AST)),
@@ -93,6 +93,25 @@ function extract_section_to_file(AST::ObaAST, lvl::Integer;
         end
     end
 
-    return file_paths
+    # make index
+    for (i, (header_ast, path)) in enumerate(zip(top_headers, file_paths))
+        
+        section_asts = collect_section(header_ast)
+
+        # delete section
+        for ast in section_asts
+            ast isa HeaderLineAST && ast[:lvl] == lvl && continue # save header
+            Base.deleteat!(AST::ObaAST, ast)
+        end
+
+        # change to link
+        file_link, ext = splitext(basename(path))
+        title = header_ast[:title]
+        header_ast.src = string("[[", file_link, "|", title, "]]")
+
+    end
     
+    write!(AST)
+
+    return file_paths
 end

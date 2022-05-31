@@ -31,7 +31,7 @@ Returns the selected text
 """
 function select_above(r0::Regex)
 
-    line_AST = get_global(:__LINE_AST__)
+    line_AST = currscript()
 
     not_found, found, match_pos = _match_childs_from(r0, line_AST, (f, ch) -> iter_from(f, ch, 1, 1) )
 
@@ -68,8 +68,7 @@ Returns the selected text
 """
 function select_below(r0::Regex)
 
-    #TODO: Make a context object
-    line_AST = ObaServer.get_global(:__LINE_AST__)
+    line_AST = currscript()
 
     not_found, found, match_pos = _match_childs_from(r0, line_AST, (f, ch) -> iter_from(f, ch, -1, -1))
 
