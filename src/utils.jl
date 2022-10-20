@@ -89,3 +89,21 @@ function getclamp(col, idx::Integer)
     idx = clamp(idx, firstindex(col), lastindex(col))
     return col[idx]
 end
+
+## ------------------------------------------------------------------
+function capture_io(f::Function; onerr = (err) -> nothing)  
+    outfile = tempname()
+    mkpath(dirname(outfile))
+    rm(outfile; force = true)
+    redirect_stdio(; stdout = outfile, stderr = outfile) do
+        try
+            f()
+        catch err
+            println("\n", sprint(showerror, err, catch_backtrace()))
+            onerr(err)
+        end
+    end
+    out = read(outfile, String)
+    rm(outfile; force = true)
+    return out
+end

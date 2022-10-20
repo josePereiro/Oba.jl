@@ -1,5 +1,5 @@
 #TODO: create a Selection object, to handle (among other things) the range.
-# I want to be able to modified the selection and included in the AST write.
+# I want to be able to modified the selection and include it in the AST write.
 
 
 # ------------------------------------------------------------------

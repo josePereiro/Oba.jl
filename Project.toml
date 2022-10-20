@@ -8,10 +8,12 @@ ArgParse = "c7e460c6-2fb9-53a9-8c5b-16f535851c63"
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
 EasyEvents = "1c3e8eab-fb9d-4faa-86a4-2d4d6165c1a6"
 FilesTreeTools = "638332cd-b357-4bf5-bfa2-3531168477f5"
+GitLinks = "e5655290-0136-40fd-b997-9e22755203bc"
 ObaASTs = "1070a898-5650-4dbc-bdc4-2f105286d314"
 ObaServer = "2466591a-1acb-44b6-b4da-1e937b8575b3"
 Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 Reexport = "189a3867-3050-52da-a836-e630ba90ab69"
+Serialization = "9e88b42a-f829-5b0c-bbe9-9e923198166b"
 StringRepFilter = "bfe2832f-5600-46d7-a449-140889a58637"
 
 [compat]

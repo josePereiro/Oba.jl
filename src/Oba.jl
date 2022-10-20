@@ -13,26 +13,33 @@
 
 module Oba
 
-import ArgParse: @add_arg_table!, ArgParseSettings, parse_args
-import EasyEvents: reset!, update!, has_event!, FileContentEvent, FileMTimeEvent
-import Random: randstring
+    import ArgParse: @add_arg_table!, ArgParseSettings, parse_args
+    import EasyEvents: reset!, update!, has_event!, FileContentEvent, FileMTimeEvent
+    import Random: randstring
+    import GitLinks
+    using Serialization
 
-using Dates
+    using Dates
 
-import Reexport: @reexport
-@reexport using ObaASTs
-@reexport using FilesTreeTools
-@reexport using ObaServer
+    import Reexport: @reexport
+    @reexport using ObaASTs
+    @reexport using FilesTreeTools
+    @reexport using ObaServer
 
-include("utils.jl")
+    include("utils.jl")
 
-include("templates/standards.jl")
+    include("templates/standards.jl")
 
-include("utils/selfcomment.jl")
-include("utils/self_flag.jl")
+    include("utils/selfcomment.jl")
+    include("utils/self_flag.jl")
+    include("utils/oba_dir.jl")
+    include("utils/backup.jl")
 
-include("workflow/selection.jl")
-include("workflow/extract_section_to_file.jl")
-include("workflow/add_eq_blocklinks.jl")
+    export obadir
+
+    include("workflow/selection.jl")
+    include("workflow/extract_section_to_file.jl")
+    include("workflow/add_eq_blocklinks.jl")
+    include("workflow/repl.jl")
 
 end
