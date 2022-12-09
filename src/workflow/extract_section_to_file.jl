@@ -7,8 +7,6 @@ const NEXT_TEMPLATE_KEY = "{{OBA: NEXT}}"
 const HOME_TEMPLATE_KEY = "{{OBA: HOME}}"
 
 function _extract_section_to_file_dflt_template()
-    # [[@catichaLecturesProbabilityEntropy2008|root]]
-    # <<< [[catichaLecturesProbabilityEntropy2008_ch2_2_2|previous]] : [[catichaLecturesProbabilityEntropy2008_ch2_2_4|next]] >>>
     """
     ---
     creation-date: "$DATE_TEMPLATE_KEY"

@@ -1,7 +1,7 @@
 #=
 TODO: implement a template system
 - from string and files
-- implemet an standard, per function, and custom key => substitution system
+- implement an standard, per function, and custom key => substitution system
 - possible syntax {{OBA: DATE}}
 - Maybe add parameters to the tags
 - Check/Implement compat with Obsidian templates
