@@ -1,4 +1,4 @@
-function selfcomment!(cmd::ObaScriptBlockAST, cmt_str::AbstractString)
+function selfcomment!!(cmd::ObaScriptBlockAST, cmt_str::AbstractString)
 
     # comment script
     cmt_str = strip(cmt_str)
@@ -11,11 +11,11 @@ function selfcomment!(cmd::ObaScriptBlockAST, cmt_str::AbstractString)
 
     # write
     set_script!(cmd, new_script)
-    write!(parent_ast(cmd))
+    write!!(parent_ast(cmd))
 
     return cmd
 end
 
 # server api
-selfcomment!(cmt_str::AbstractString) = selfcomment!(currscript(), cmt_str)
-export selfcomment!
+selfcomment!!(cmt_str::AbstractString) = selfcomment!!(currscript(), cmt_str)
+export selfcomment!!

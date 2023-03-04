@@ -11,6 +11,10 @@
 # Like the template system but with heavy drugs.
 # I want to have the whole power of julia (although nothing prevent other languages e.g. python) for modifying and analyzing a vault or set of vaults.
 
+# TODO: create a Gmail API infrestructure (check SMTPClient.jl)
+# The idea is to set automatically calendar events and so on...
+
+
 module Oba
 
     import ArgParse: @add_arg_table!, ArgParseSettings, parse_args
@@ -22,6 +26,7 @@ module Oba
     using Dates
 
     import Reexport: @reexport
+    @reexport using ObaBase
     @reexport using ObaASTs
     @reexport using FilesTreeTools
     @reexport using ObaServer

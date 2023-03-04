@@ -109,7 +109,7 @@ function extract_section_to_file!(AST::ObaAST, lvl::Integer;
 
     end
     
-    write!(AST)
+    write!!(AST)
 
     return file_paths
 end

@@ -8,7 +8,6 @@ function _download_crossref_meta(doi; dir = pwd(), force = false)
     if !isfile(outpath)
         doi = _doi_to_url(doi)
         isempty(doi) && error("We don't like your DOI: '$(doi)'")
-        # TODO: Understand what is going on here!
         mkpath(dir)
         @info("Downloading", doi)
         # cmdstr = """curl -L -H "Accept: application/vnd.crossref.unixsd+json" "$(doi)" > "$(outpath)" """

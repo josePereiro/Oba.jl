@@ -22,6 +22,7 @@ function upload_backup(remote_url::AbstractString;
 	istime = true
 	lastok = false
 	elapsed = 0
+    
 	if isfile(bkfile)
 		config = deserialize(bkfile)
 		elapsed = time() - get(config, :last, 0)
@@ -30,7 +31,11 @@ function upload_backup(remote_url::AbstractString;
 		istime = elapsed > next
 	end
 	if !force && !istime && lastok
-		@info("No time yet", elapsed, next, lastok)
+		@info("No time yet", 
+            elapsed = ObaBase._canonicalize(elapsed, Second), 
+            next = ObaBase._canonicalize(next, Second), 
+            lastok
+        )
 		return
 	end
 
@@ -40,7 +45,11 @@ function upload_backup(remote_url::AbstractString;
         return
     end
     
-	@info("Time to backup", elapsed, next, lastok)
+	@info("Time to backup", 
+        elapsed = ObaBase._canonicalize(elapsed, Second), 
+        next = ObaBase._canonicalize(next, Second), 
+        lastok
+    )
 	
 	# Init link
 	GitLinks.instantiate(gl; verbose = true)

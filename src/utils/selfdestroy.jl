@@ -1,3 +1,3 @@
-function selfdestroy!(cmd::ObaScriptBlockAST)
+function selfdestroy!!(cmd::ObaScriptBlockAST)
     
 end

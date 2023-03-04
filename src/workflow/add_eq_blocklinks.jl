@@ -6,33 +6,36 @@ end
 function add_eq_blocklinks!(AST::ObaAST; prefix = "eq--")
     
     for ch in AST
+
         islatexblock(ch) || continue
         textag_ast = get(ch, :tag, nothing)
         isnothing(textag_ast) && continue
         texlabel = get(textag_ast, :label, "")
         isempty(texlabel) && continue
-        link0 = string(prefix, texlabel) |> _format_block_link
+        link0 = string(prefix, texlabel)
+        link0 = _format_block_link(link0)
         
-        next_idx = findnext(ch) do ch
-            !isemptyline(ch)
-        end
-        
-        haslink = false
-        if !isnothing(next_idx) 
-            next_ast = AST[next_idx]
-            if isblocklinkline(next_ast)
-                link1 = get(next_ast, :label, "")
-                haslink = link1 == link0
-            end
-        end
-
-        if !haslink
-            # I add the link to the texast, at the end I will reparse! the whole AST
+        # check
+        next_idx = min(child_idx(ch) + 1, lastindex(AST))
+        next_ast = AST[next_idx]
+        if isblocklinkline(next_ast)
+            # at the end I will reparse! the whole AST
+            next_ast.src = string("^", link0)
+        else
+            # I add the link to the texast, 
+            # at the end I will reparse! the whole AST
             ch.src *= string("\n", "^", link0)
         end
-    end
+
+    end # for ch in AST
 
     reparse!(AST)
 
+    return AST
+end
+
+function add_eq_blocklinks!!(AST::ObaAST; prefix = "eq--") 
+    add_eq_blocklinks!(AST; prefix)
+    write!!(AST)
     return AST
 end
