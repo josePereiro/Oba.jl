@@ -1,7 +1,6 @@
 #TODO: create a Selection object, to handle (among other things) the range.
 # I want to be able to modified the selection and include it in the AST write.
 
-
 # ------------------------------------------------------------------
 function _match_childs_from(reg::Regex, line_AST::AbstractObaASTChild, iter_fun::Function)
 
@@ -29,9 +28,9 @@ Select a portion of txt from the caller position UP till the first hit of the re
 Error if the regex is missed.
 Returns the selected text
 """
-function select_above(r0::Regex)
+function select_above(os::ObaServer, r0::Regex)
 
-    line_AST = currscript()
+    line_AST = curr_scriptast(os)
 
     not_found, found, match_pos = _match_childs_from(r0, line_AST, (f, ch) -> iter_from(f, ch, 1, 1) )
 
@@ -66,9 +65,9 @@ Select a portion of txt from the caller position DOWN till the first hit of the 
 Error if the regex is missed.
 Returns the selected text
 """
-function select_below(r0::Regex)
+function select_below(os::ObaServer, r0::Regex)
 
-    line_AST = currscript()
+    line_AST = curr_scriptast(os)
 
     not_found, found, match_pos = _match_childs_from(r0, line_AST, (f, ch) -> iter_from(f, ch, -1, -1))
 

@@ -8,16 +8,16 @@ function _bash_output_formatter(out)
     return join(to_append, "\n")
 end
 
-function repl!!(f::Function; 
+function repl!!(f::Function, os::ObaServer; 
         flags = "u", 
         out_formatter = _bash_output_formatter
     )
 
-    ast = currast()
-    scr = currscript()
+    ast = curr_ast(os)
+    scr = curr_scriptast(os)
     @show scr
     
-    !isempty(flags) && self_flag!!(flags)
+    !isempty(flags) && self_flag!!(os, flags)
 
     out = capture_io(f)
 

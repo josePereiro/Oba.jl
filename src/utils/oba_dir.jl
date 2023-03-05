@@ -1,2 +1,2 @@
 const OBA_DIR_NAME = ".oba"
-obadir() = joinpath(vaultdir(), OBA_DIR_NAME)
+oba_dir(os::ObaServer) = joinpath(vault_dir(os), OBA_DIR_NAME)

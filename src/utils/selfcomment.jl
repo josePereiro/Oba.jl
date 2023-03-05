@@ -17,5 +17,5 @@ function selfcomment!!(cmd::ObaScriptBlockAST, cmt_str::AbstractString)
 end
 
 # server api
-selfcomment!!(cmt_str::AbstractString) = selfcomment!!(currscript(), cmt_str)
+selfcomment!!(os::ObaServer, cmt_str::AbstractString) = selfcomment!!(curr_scriptast(os), cmt_str)
 export selfcomment!!

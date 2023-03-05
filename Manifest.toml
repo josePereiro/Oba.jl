@@ -1,8 +1,8 @@
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.8.4"
+julia_version = "1.8.5"
 manifest_format = "2.0"
-project_hash = "e49071236708f32d3ee7d7c1f709361bad661eaa"
+project_hash = "62ab6af1bffc9e2f0c0360594b85d40714205c3a"
 
 [[deps.ArgParse]]
 deps = ["Logging", "TextWrap"]
@@ -36,7 +36,7 @@ uuid = "f43a241f-c20a-4ad4-852c-f6b1247861c6"
 version = "1.6.0"
 
 [[deps.EasyEvents]]
-git-tree-sha1 = "8bcc04c5625b8f1bae7c62de360af373a1116d57"
+path = "/Users/Pereiro/.julia/dev/EasyEvents"
 uuid = "1c3e8eab-fb9d-4faa-86a4-2d4d6165c1a6"
 version = "0.3.2"
 
@@ -44,9 +44,9 @@ version = "0.3.2"
 uuid = "7b1f6079-737a-58dc-b8bc-7a2ca5c1b5ee"
 
 [[deps.FilesTreeTools]]
-git-tree-sha1 = "8d3e2e3b484834e41a6c1f6322640c160d0bf093"
+path = "/Users/Pereiro/.julia/dev/FilesTreeTools"
 uuid = "638332cd-b357-4bf5-bfa2-3531168477f5"
-version = "0.5.0"
+version = "0.6.0"
 
 [[deps.GitLinks]]
 deps = ["SimpleLockFiles"]
@@ -142,16 +142,21 @@ uuid = "1070a898-5650-4dbc-bdc4-2f105286d314"
 version = "0.3.2"
 
 [[deps.ObaBase]]
-deps = ["Dates", "FilesTreeTools", "HTTP"]
+deps = ["Dates", "FilesTreeTools", "HTTP", "Random"]
 path = "/Users/Pereiro/.julia/dev/ObaBase"
 uuid = "ed65db08-98aa-43d3-9a5a-577874b2c92a"
 version = "0.1.0"
 
-[[deps.ObaServer]]
-deps = ["Dates", "EasyEvents", "FilesTreeTools", "HTTP", "ObaASTs", "ObaBase", "Random"]
-path = "/Users/Pereiro/.julia/dev/ObaServer"
-uuid = "2466591a-1acb-44b6-b4da-1e937b8575b3"
-version = "0.1.2"
+[[deps.ObaServers]]
+deps = ["Dates", "EasyEvents", "FilesTreeTools", "HTTP", "ObaASTs", "ObaBase", "OrderedCollections", "Random"]
+path = "/Users/Pereiro/.julia/dev/ObaServers"
+uuid = "25f8d37a-575f-481b-82a1-d70056d35966"
+version = "0.1.0"
+
+[[deps.OrderedCollections]]
+git-tree-sha1 = "85f8e6578bf1f9ee0d11e7bb1b1456435479d47c"
+uuid = "bac558e1-5e72-5ebc-8fee-abe8a469f55d"
+version = "1.4.1"
 
 [[deps.Pkg]]
 deps = ["Artifacts", "Dates", "Downloads", "LibGit2", "Libdl", "Logging", "Markdown", "Printf", "REPL", "Random", "SHA", "Serialization", "TOML", "Tar", "UUIDs", "p7zip_jll"]
@@ -209,7 +214,7 @@ uuid = "69024149-9ee7-55f6-a4c4-859efe599b68"
 version = "0.3.5"
 
 [[deps.StringRepFilter]]
-git-tree-sha1 = "7b45972c9a3033fdf1b59a80fb089609e767932e"
+git-tree-sha1 = "e6c7ecb4b9842b17483da0073e2f85c951b04c1d"
 uuid = "bfe2832f-5600-46d7-a449-140889a58637"
 version = "0.2.0"
 
