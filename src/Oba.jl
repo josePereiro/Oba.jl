@@ -14,6 +14,13 @@
 # TODO: create a Gmail API infrestructure (check SMTPClient.jl)
 # The idea is to set automatically calendar events and so on...
 
+# TODO: Start ObaObjects package
+# Maybe an ObaScript is the first instance of an ObaObjects, 
+# left the ASTs package only for the Core (Obsidian compatible) parsing
+# The idea is that you can build several Objects of a same document(s)/portion.
+# Different point of view (application oriented) of the same data. 
+# Build the basic infrestruction to start an echosystem.
+
 
 module Oba
 
@@ -47,6 +54,7 @@ module Oba
 
     #! include workflow
     include("workflow/add_eq_blocklinks.jl")
+    include("workflow/collect_patterns_repl.jl")
     include("workflow/extract_section_to_file.jl")
     include("workflow/repl.jl")
     include("workflow/selection.jl")

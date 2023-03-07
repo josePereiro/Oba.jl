@@ -1,7 +1,5 @@
 function _bash_output_formatter(out)
     to_append = String[]
-    push!(to_append, "")
-    push!(to_append, "___")
     push!(to_append, "```bash")
     push!(to_append, out)
     push!(to_append, "```")
@@ -15,14 +13,14 @@ function repl!!(f::Function, os::ObaServer;
 
     ast = curr_ast(os)
     scr = curr_scriptast(os)
-    @show scr
     
     !isempty(flags) && self_flag!!(os, flags)
 
-    out = capture_io(f)
+    out0 = capture_io(f)
+    out = out_formatter(out0)
 
     cut_from!(scr)
-    append!(ast, out_formatter(out))
+    append!(ast, string("\n___\n", out))
 
     write!!(ast)
 
