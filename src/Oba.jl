@@ -21,6 +21,7 @@
 # Different point of view (application oriented) of the same data. 
 # Build the basic infrestruction to start an echosystem.
 
+# TODO: add ![[output.md]] kind of stuff for repl functionality
 
 module Oba
 
@@ -55,9 +56,14 @@ module Oba
     #! include workflow
     include("workflow/add_eq_blocklinks.jl")
     include("workflow/collect_patterns_repl.jl")
+    include("workflow/creation_date_maintenance.jl")
     include("workflow/extract_section_to_file.jl")
     include("workflow/repl.jl")
     include("workflow/selection.jl")
+
+    #! include formatters
+    include("formatters/formatters.jl")
+    include("formatters/yaml_section.jl")
 
     export obadir
 

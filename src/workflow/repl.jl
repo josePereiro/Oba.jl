@@ -14,7 +14,7 @@ function repl!!(f::Function, os::ObaServer;
     ast = curr_ast(os)
     scr = curr_scriptast(os)
     
-    !isempty(flags) && self_flag!!(os, flags)
+    !isempty(flags) && self_flag!!(scr, flags)
 
     out0 = capture_io(f)
     out = out_formatter(out0)
