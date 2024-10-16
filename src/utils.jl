@@ -46,7 +46,7 @@ function header_to_filename(header_ast::HeaderLineAST, rename_mask::Regex = r"";
     title = strip(header_ast[:title])
     masked = match(rename_mask, title)
     isnothing(masked) && error("mask failed to match:\ntitle: '", title, "'\nmask: ", rename_mask)
-    topfilename, ext = splitext(basename(parent_file(header_ast)))
+    topfilename, ext = splitext(basename(source_file(header_ast)))
     join ? string(topfilename, " -- ", masked.match, ext) : string(masked.match)
 end
 
