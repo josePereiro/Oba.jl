@@ -50,7 +50,7 @@ Other keys {{OBA: SECTION[idx]}} {{OBA: PREVIOUS}} {{OBA: NEXT}} {{OBA: HOME}}
 function extract_section_to_file!(AST::ObaAST, lvl::Integer; 
         start = firstindex(AST),
         rename_mask = r".*",
-        dir = dirname(parent_file(AST)),
+        dir = dirname(source_file(AST)),
         force = true,
         template::Union{Nothing, String} = _extract_section_to_file_dflt_template() 
     )
@@ -79,7 +79,7 @@ function extract_section_to_file!(AST::ObaAST, lvl::Integer;
         else
             # handle template
             txt = _templates_replace_standards(template)
-            txt = _template_replace_home(txt, parent_file(header_ast))
+            txt = _template_replace_home(txt, source_file(header_ast))
             txt = _template_replace_sections(txt, section_asts)
             if isinbound(file_paths, i - 1)
                 txt = _template_replace_previous(txt, file_paths[i - 1])
