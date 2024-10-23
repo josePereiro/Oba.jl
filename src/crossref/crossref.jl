@@ -1,5 +1,5 @@
 ## ------------------------------------------------------------------
-_crossref_meta_dir() = joinpath(depotdir(), ".crossref")
+_crossref_meta_dir(depotdir) = joinpath(depotdir, ".crossref")
 
 function _download_crossref_meta(doi; dir = pwd(), force = false)
     name = string(_format_doi_for_filename(doi), ".json")
@@ -13,15 +13,15 @@ function _download_crossref_meta(doi; dir = pwd(), force = false)
         # cmdstr = """curl -L -H "Accept: application/vnd.crossref.unixsd+json" "$(doi)" > "$(outpath)" """
         cmdstr = """curl -G "https://api.crossref.org/works/$(doi)" > "$(outpath)" """
         run(`bash -c $(cmdstr)`; wait = true)
-        sleep(0.2) # Avoid loading the line
+        sleep(0.2) # Avoid abusing the line
         @info("Done")
     end
     return outpath
 end
 
 ## ------------------------------------------------------------------
-function _crossref_references(doi::AbstractString; force = false)
-    outdir = _crossref_meta_dir()
+function _crossref_references(doi::AbstractString; dir = pwd(), force = false)
+    outdir = _crossref_meta_dir(dir)
     jsonfile = _download_crossref_meta(doi; force, dir = outdir)
     try
         jsonstr = read(jsonfile, String)
