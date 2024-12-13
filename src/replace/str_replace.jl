@@ -1,3 +1,5 @@
+# ..-- - .- .--- .- .- .- -- .- .-.-. -.- .- .-.-. -.--- - 
+
 function file_replace(fn::String, pt0::Pair, pts::Pair...)
     # load
     src0 = read(fn, String)
@@ -27,10 +29,10 @@ function line_replace(fn::String, pt0::Pair, pts::Pair...)
         # replace
         _new_line = _old_line
         for pt in [pt0; pts...]
-            _new_line = replace(_line, pt)
+            _new_line = replace(_new_line, pt)
         end  
         push!(_new_lines, _new_line)
-        _changed = _changed || (_old_line == _new_line)
+        _changed = _changed || (_old_line != _new_line)
     end
 
     # write
@@ -43,4 +45,17 @@ function line_replace(fn::String, pt0::Pair, pts::Pair...)
     end
 
     return nothing
+end
+
+
+# ..-- - .- .--- .- .- .- -- .- .-.-. -.- .- .-.-. -.--- - 
+# Utils
+function _formatted_timetag(dt)
+    # TODO: link with configuration
+    return Dates.format(dt, "yyyy:mm:dd-HH:MM:SS")
+end
+
+function _formatted_timetag(ut::Float64)
+    dt = Dates.unix2datetime(ut)
+    _formatted_timetag(dt)
 end
