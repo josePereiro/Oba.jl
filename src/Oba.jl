@@ -6,6 +6,7 @@ module Oba
     @reexport using ObaASTs
     @reexport using FilesTreeTools
     @reexport using ObaServers
+    using MassExport
 
     #! include .
     
@@ -13,6 +14,9 @@ module Oba
     include("crossref/crossref.jl")
     include("crossref/utils.jl")
     
-    export obadir
+    #! include replace
+    include("replace/str_replace.jl")
+    
+    @exportall_non_underscore
 
 end
